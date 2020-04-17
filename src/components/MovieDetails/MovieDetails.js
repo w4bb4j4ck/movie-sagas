@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import EditModal from '../EditModal/EditModal';
+import Button from '@material-ui/core/Button';
 
 class MovieDetails extends Component {
 
@@ -14,9 +16,9 @@ class MovieDetails extends Component {
             <h5>{element.name}</h5>
             <p>{element.description}</p>
             <Link to="/">
-            <button>BACK</button>
+            <Button variant="outlined" color="primary">BACK</Button>
             </Link>
-            <button>EDIT</button>
+            <EditModal />
           </div>)}
       </>
     );
