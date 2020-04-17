@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './MovieList.css';
 
 class MovieList extends Component {
 
@@ -10,7 +11,14 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-          {JSON.stringify(this.props.movies)}
+          {this.props.movies.map((movie) => 
+          <div className="element">
+              <img src={movie.poster}/>
+              <div>
+                  <h2>{movie.title}</h2>
+                  <p>{movie.description}</p>
+              </div>
+          </div>)}
       </div>
     );
   }
