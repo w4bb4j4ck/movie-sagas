@@ -1,0 +1,21 @@
+.main-head {
+text-align: left;
+padding: 28px;
+background-color: crimson;
+}
+
+.secondary-head {
+    display: flex;
+    left: 12px;
+    background-color: gray;
+    margin-bottom: 16px;
+    font-size: small;
+}
+
+a {
+    margin: 13px;
+}
+
+p {
+    margin-left: 12px;
+}
