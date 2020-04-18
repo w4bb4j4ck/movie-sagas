@@ -8,6 +8,7 @@ import Chip from '@material-ui/core/Chip';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import { connect } from 'react-redux';
 import './EditForm.css';
 
 const styles = theme => ({
@@ -40,9 +41,6 @@ const styles = theme => ({
   noLabel: {
     marginTop: theme.spacing.unit * 3,
   },
-  typography: {
-
-  }
 });
 
 const ITEM_HEIGHT = 48;
@@ -72,7 +70,7 @@ const names = [
 function getStyles(name, that) {
     return {
       fontWeight:
-        that.state.name.indexOf(name) === -1
+        that.state.genre.indexOf(name) === -1
           ? that.props.theme.typography.fontWeightRegular
           : that.props.theme.typography.fontWeightMedium,
     };
@@ -81,19 +79,18 @@ function getStyles(name, that) {
 class EditForm extends React.Component {
 
   state = {
-    name: [],
-    age: '',
+    genre: [],
+    title: this.props.details[0].title,
+    poster: this.props.details[0].poster,
+    description: this.props.details[0].description,
     multiline: 'Controlled',
   };
 
-  handleChange = name => event => {
+  handleChange = input => event => {
     this.setState({
-      [name]: event.target.value,
+      [input]: event.target.value,
     });
-  };
-
-  handleCheckbox = event => {
-    this.setState({ name: event.target.value });
+    this.props.grabState(input, event);
   };
 
   handleChangeMultiple = event => {
@@ -105,21 +102,23 @@ class EditForm extends React.Component {
       }
     }
     this.setState({
-      name: value,
+      genre: value,
     });
   };
 
   render() {
+
     const { classes } = this.props;
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
-
         <TextField
           id="outlined-full-width"
           label="Title"
+          onChange={this.handleChange('title')}
           style={{ margin: 8 }}
           fullWidth
+          value={this.state.title}
           margin="normal"
           variant="outlined"
           InputLabelProps={{
@@ -131,8 +130,8 @@ class EditForm extends React.Component {
           <InputLabel htmlFor="select-multiple-chip">Genre(s)</InputLabel>
           <Select
             multiple
-            value={this.state.name}
-            onChange={this.handleCheckbox}
+            value={this.state.genre}
+            onChange={this.handleChange('genre')}
             input={<Input id="select-multiple-chip" />}
             renderValue={selected => (
               <div className={classes.chips}>
@@ -143,19 +142,21 @@ class EditForm extends React.Component {
             )}
             MenuProps={MenuProps}
           >
-            {/* {names.map(name => 
+            {names.map(name => 
               <MenuItem key={name} value={name} style={getStyles(name, this)}>
                 {name}
               </MenuItem>
-            )} */}
+            )}
           </Select>
         </FormControl>
         
         <TextField
           id="outlined-full-width"
           label="Poster URL"
+          onChange={this.handleChange('poster')}
           style={{ margin: 8 }}
           fullWidth
+          value={this.state.poster}
           margin="normal"
           variant="outlined"
           InputLabelProps={{
@@ -166,8 +167,10 @@ class EditForm extends React.Component {
         <TextField
           id="outlined-multiline-static"
           label="Description"
+          onChange={this.handleChange('description')}
           multiline
           fullWidth
+          value={this.state.description}
           rows="4"
           className={classes.textField}
           margin="normal"
@@ -182,4 +185,8 @@ EditForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EditForm);
+const putStateOnProps = (reduxStore) => ({
+  details: reduxStore.details
+})
+
+export default connect(putStateOnProps)(withStyles(styles, { withTheme: true })(EditForm));

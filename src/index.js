@@ -17,6 +17,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovieSaga);
     yield takeEvery('FETCH_GENRES', fetchGenreSaga);
     yield takeEvery('FETCH_DETAILS', fetchDetailSaga);
+    yield takeEvery('UPDATE_MOVIE', updateMovieSaga);
 }
 
 // Generator functions
@@ -50,6 +51,17 @@ function* fetchDetailSaga(action){
     }
 }
 
+function* updateMovieSaga(action){
+    try{
+        yield axios.put(`/api/details`, action.payload);
+        yield put ({type: 'FETCH_MOVIES'});
+        yield put ({type: 'FETCH_DETAILS', payload: action.payload.movie_id});
+    }
+    catch(error){
+        console.log('Error in updateMovieSaga.', error);
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -73,10 +85,13 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store the details of current selection
 const details = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload;
+        case 'CLEAR_DETAILS':
+            return [];
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import MovieList from '../MovieList/MovieList';
 import Header from '../Header/Header';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import MovieEdit from '../MovieEdit/MovieEdit';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Route} from 'react-router-dom';
 
 class App extends Component {
   // Renders the entire app on the DOM

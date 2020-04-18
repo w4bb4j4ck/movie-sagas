@@ -19,7 +19,7 @@ class MovieList extends Component {
           {this.props.movies.map((movie) => 
           <div className="element">
             <Link to='/details'>
-              <img onClick={this.handleClick(movie.id)} src={movie.poster}/>
+              <img onClick={this.handleClick(movie.id)} src={movie.poster} alt={movie.title} />
             </Link>
               <div>
                 <Link to='/details'>
