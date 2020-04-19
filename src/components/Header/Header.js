@@ -12,7 +12,16 @@ class Header extends Component {
                     </Link>
                 </div>
                 <div className="secondary-head">
-                    <p id="trending-title">Trending on RP:</p><a>Best Movie 2020</a><a>Top Interdimensional Netflix Show</a>
+                    <p id="trending-title">Trending on RP:</p>
+                    <Link to='/best-movie'>
+                    <p>Best Movie 2020</p>
+                    </Link>
+                    <Link to='/top-show'>
+                    <p>Top Interdimensional Netflix Show</p>
+                    </Link>
+                    <Link to='/coming-soon'>
+                    <p>Coming Soon</p>
+                    </Link>
                 </div>
             </header>
         )
