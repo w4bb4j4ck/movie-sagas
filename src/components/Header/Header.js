@@ -8,11 +8,11 @@ class Header extends Component {
             <header>
                 <div className="main-head">
                     <Link to='/'>
-                        <h3>Rotten Plumbus</h3>
+                    <img src="/images/plumbus1.png" height="60" width="50" alt="plumbus" /><h1>Rotten Plumbus</h1>
                     </Link>
                 </div>
                 <div className="secondary-head">
-                    <p>Trending on RP</p><a>Best Movie 2020</a><a>Top Interdimensional Netflix Show</a>
+                    <p id="trending-title">Trending on RP:</p><a>Best Movie 2020</a><a>Top Interdimensional Netflix Show</a>
                 </div>
             </header>
         )

@@ -2,6 +2,8 @@
 text-align: left;
 padding: 28px;
 background-color: crimson;
+font-family: Girassol;
+
 }
 
 .secondary-head {
@@ -12,10 +14,33 @@ background-color: crimson;
     font-size: small;
 }
 
+h1 {
+    margin: 0;
+}
+
 a {
     margin: 13px;
 }
 
+a:link {
+    text-decoration: none;
+    color: black;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
+
 p {
     margin-left: 12px;
+}
+
+#trending-title {
+    color: gold;
+}
+
+img {
+    float: left;
+    margin-right: 12px;
 }
