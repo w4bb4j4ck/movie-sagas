@@ -21,7 +21,9 @@ class MovieItem extends Component {
                     <Link to='/details'>
                         <h2 onClick={this.handleClick(this.props.movie.id)}>{this.props.movie.title}</h2>
                     </Link>
-                    <p>{this.props.movie.description}</p>
+                    <div>
+                        <p id="list-description">{this.props.movie.description}</p>
+                    </div>
                 </div>
             </div>
             </>

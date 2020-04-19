@@ -18,6 +18,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRES', fetchGenreSaga);
     yield takeEvery('FETCH_DETAILS', fetchDetailSaga);
     yield takeEvery('UPDATE_MOVIE', updateMovieSaga);
+    yield takeEvery('FETCH_TRENDING', fetchTrendingSaga);
 }
 
 // Generator functions
@@ -62,6 +63,16 @@ function* updateMovieSaga(action){
     }
 }
 
+function* fetchTrendingSaga(action){
+    try{
+        const response = yield axios.get(`/api/trending`);
+        yield put ({type: 'SET_TRENDING', payload: response.data});
+    }
+    catch(error){
+        console.log('Error in fetchTrendingSaga', error);
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -97,12 +108,22 @@ const details = (state = [], action) => {
     }
 }
 
+const trending = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_TRENDING':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
         details,
+        trending,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

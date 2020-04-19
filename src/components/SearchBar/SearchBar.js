@@ -11,7 +11,7 @@ const styles = {
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 400,
+    width: 300,
   },
   input: {
     marginLeft: 8,
@@ -27,7 +27,7 @@ function CustomizedInputBase(props) {
 
   return (
     <Paper className={classes.root} elevation={1}>
-      <InputBase className={classes.input} placeholder="Search Rotten Plumbus" />
+      <InputBase className={classes.input} placeholder="Search" />
       <IconButton className={classes.iconButton} aria-label="Search">
         <SearchIcon />
       </IconButton>

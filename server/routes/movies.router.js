@@ -46,4 +46,15 @@ router.put('/details', (req, res) => {
 
 })
 
+router.get('/trending', (req, res) => {
+    const queryText = `SELECT * FROM "trending";`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('Error in router.get', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

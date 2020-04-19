@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import EditModal from '../EditModal/EditModal';
 import Button from '@material-ui/core/Button';
+import './MovieDetails.css';
 
 class MovieDetails extends Component {
 
@@ -18,11 +19,17 @@ class MovieDetails extends Component {
             <img src={element.poster} alt={element.title} />
             <h2>{element.title}</h2>
             <h5>{element.name}</h5>
-            <p>{element.description}</p>
+            <div id="details-description">
+              <p>{element.description}</p>
+            </div>
             <Link to="/">
-            <Button onClick={this.handleBack} variant="outlined" color="primary">BACK</Button>
+              <div id="back-btn">
+                <Button onClick={this.handleBack} variant="contained" size="large" color="primary">BACK</Button>
+              </div>
             </Link>
-            <EditModal />
+            <div>
+              <EditModal />
+            </div>
           </div>)}
       </div>
     );

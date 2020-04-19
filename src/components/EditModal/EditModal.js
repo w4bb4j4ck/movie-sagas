@@ -191,7 +191,7 @@ class EditModal extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
+        <Button variant="contained" size="large" color="secondary" onClick={this.handleClickOpen}>
           EDIT
         </Button>
         <Dialog
