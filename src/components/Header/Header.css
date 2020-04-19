@@ -1,8 +1,9 @@
 .main-head {
-text-align: left;
-padding: 28px;
-background-color: crimson;
-font-family: Girassol;
+    text-align: left;
+    padding: 28px;
+    margin: 0;
+    background-color: crimson;
+    font-family: Girassol;
 
 }
 
@@ -16,6 +17,9 @@ font-family: Girassol;
 
 h1 {
     margin: 0;
+    font-size: 300%;
+    position: relative;
+    top: 12px;
 }
 
 a {
@@ -34,13 +38,22 @@ a:link {
 
 p {
     margin-left: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #trending-title {
     color: gold;
+    margin-top: 12px;
 }
 
 img {
     float: left;
     margin-right: 12px;
+}
+
+#search {
+    position: relative;
+    left: 75%;
+    bottom: 36px;
 }

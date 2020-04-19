@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar';
 
 class Header extends Component {
     render(){
@@ -8,8 +9,13 @@ class Header extends Component {
             <header>
                 <div className="main-head">
                     <Link to='/'>
-                    <img src="/images/plumbus1.png" height="60" width="50" alt="plumbus" /><h1>Rotten Plumbus</h1>
+                        <div id="logo">
+                            <img src="/images/plumbus1.png" height="75" width="60" alt="plumbus" /><h1>Rotten Plumbus</h1>
+                        </div>
                     </Link>
+                    <div id="search">
+                        <SearchBar />
+                    </div>
                 </div>
                 <div className="secondary-head">
                     <p id="trending-title">Trending on RP:</p>

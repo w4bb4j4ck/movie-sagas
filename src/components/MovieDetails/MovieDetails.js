@@ -12,9 +12,9 @@ class MovieDetails extends Component {
 
   render() {
     return (
-      <>
+      <div className="main">
         {this.props.details.map((element) =>
-          <div>
+          <div key={element.title}>
             <img src={element.poster} alt={element.title} />
             <h2>{element.title}</h2>
             <h5>{element.name}</h5>
@@ -24,7 +24,7 @@ class MovieDetails extends Component {
             </Link>
             <EditModal />
           </div>)}
-      </>
+      </div>
     );
   }
 }
