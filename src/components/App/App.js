@@ -18,9 +18,9 @@ class App extends Component {
           <Route exact path='/' component={MovieList}/>
           <Route path='/details' component={MovieDetails}/>
           <Route path='/edit' component={MovieEdit}/>
-          <Route path='/best-movie' component={<TrendingItem trending={this.props.trending[0]} />} />
-          <Route path='/top-show' component={<TrendingItem trending={this.props.trending[1]} />} />
-          <Route path='/coming-soon' component={<TrendingItem trending={this.props.trending[2]} />} />
+          <Route path='/best-movie' render={(props) => <TrendingItem {...props} trending={this.props.trending[0]} />} />
+          <Route path='/top-show' render={(props) => <TrendingItem {...props} trending={this.props.trending[1]} />} />
+          <Route path='/coming-soon' render={(props) => <TrendingItem {...props} trending={this.props.trending[2]} />} />
         </Router>
       </div>
     );
